@@ -25,6 +25,8 @@ const TrainForm: React.FC<TrainFormProps> = ({ onSubmit, onClose, initialValues 
     onClose();
   };
 
+  const isNotBlank = (value: string) => value.trim() !== '';
+
   React.useEffect(() => {
     if (initialValues) {
       Object.keys(initialValues).forEach((key) => {
@@ -44,26 +46,29 @@ const TrainForm: React.FC<TrainFormProps> = ({ onSubmit, onClose, initialValues 
       <DialogContent>
         <Paper elevation={3} style={{ padding: 20, maxWidth: 400, margin: 'auto', marginTop: 10 }}>
           <form onSubmit={handleSubmit(onSubmitHandler)}>
-            <TextField
+          <TextField
               label="Name"
               type="text"
-              {...register('name', { required: 'Name is required' })}
+              {...register('name', { required: 'Name is required', validate: isNotBlank })}
               fullWidth
               margin="normal"
+              helperText={formState.errors.name?.message}
             />
             <TextField
               label="Departure Place"
               type="text"
-              {...register('departurePlace', { required: 'Departure Place is required' })}
+              {...register('departurePlace', { required: 'Departure Place is required', validate: isNotBlank })}
               fullWidth
               margin="normal"
+              helperText={formState.errors.departurePlace?.message}
             />
             <TextField
               label="Arrival Place"
               type="text"
-              {...register('arrivalPlace', { required: 'Arrival Place is required' })}
+              {...register('arrivalPlace', { required: 'Arrival Place is required', validate: isNotBlank })}
               fullWidth
               margin="normal"
+              helperText={formState.errors.arrivalPlace?.message}
             />
             <TextField
               label="Departure Time"
@@ -74,6 +79,7 @@ const TrainForm: React.FC<TrainFormProps> = ({ onSubmit, onClose, initialValues 
               InputLabelProps={{
                 shrink: true,
               }}
+              helperText={formState.errors.departureTime?.message}
             />
             <TextField
               label="Arrival Time"
@@ -84,6 +90,7 @@ const TrainForm: React.FC<TrainFormProps> = ({ onSubmit, onClose, initialValues 
               InputLabelProps={{
                 shrink: true,
               }}
+              helperText={formState.errors.arrivalTime?.message}
             />
             <TextField
               label="Price"
@@ -91,6 +98,7 @@ const TrainForm: React.FC<TrainFormProps> = ({ onSubmit, onClose, initialValues 
               {...register('price', { required: 'Price is required' })}
               fullWidth
               margin="normal"
+              helperText={formState.errors.price?.message}
             />
             <Box display="flex" justifyContent="space-between" marginTop={2}>
               <Button type="button" onClick={onClose} style={{ color: '#ce93d8' }}>
