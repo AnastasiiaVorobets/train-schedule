@@ -27,17 +27,14 @@
 ### Frontend
 - cd client
 - npm install
-- npm install @mui/material @emotion/react @emotion/styled
-- npm install @mui/icons-material
-- npm install framer-motion
+- install all needed dependencies
 - npm run dev
 - Open `http://localhost:3000/`
 
 ### Backend
 - cd server
 - npm install
-- npm install --save @nestjs/typeorm typeorm
-- npm install pg --save
+- install all needed dependencies
 - npm start
 - Open `http://localhost:4000/trains`
 
