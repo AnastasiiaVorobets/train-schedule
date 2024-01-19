@@ -100,6 +100,7 @@ const TrainForm: React.FC<TrainFormProps> = ({ onSubmit, onClose, initialValues 
               margin="normal"
               helperText={formState.errors.price?.message}
             />
+
             <Box display="flex" justifyContent="space-between" marginTop={2}>
               <Button type="button" onClick={onClose} style={{ color: '#ce93d8' }}>
                 Close
